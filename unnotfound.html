@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>404 Not Found</title>
+  <link rel="stylesheet" href="css/mystery.css">
+</head>
+<body>
+  <div id="bsod">
+    <div class="emoji">:( <a href="#" class="hidden-trigger">秘密の入口</a></div>
+  <p class="main-message">
+  問題が発生したため、PCを再起動する必要があります。<br>
+  エラー情報を収集中です。再起動できます。
+</p>
+  <p class="main-message"><span id="percent">0%</span> 完了</p>
+
+<script>
+  let percent = 0;
+  const element = document.getElementById("percent");
+
+  function updatePercent() {
+    if (percent >= 100) return;
+
+    // カウントアップ
+    percent++;
+    element.textContent = percent + "%";
+
+    // 次の更新までのランダム時間（200ms～1000ms間で基本待機）
+    let baseDelay = Math.floor(Math.random() * 800) + 200;
+
+    // ランダムで1/6くらいの確率で長い待機（1〜5秒）
+    if (Math.random() < 0.17) {
+      baseDelay = Math.floor(Math.random() * 4000) + 1000;
+    }
+
+    setTimeout(updatePercent, baseDelay);
+  }
+
+  // 開始
+  updatePercent();
+</script>
+<script>
+  // 「再起動します...」の表示と遷移処理
+  function showRestartingAndRedirect() {
+    const restartText = document.getElementById("restarting-text");
+    restartText.style.display = "block";
+
+    // 3秒後に別のページへ遷移
+    setTimeout(() => {
+      window.location.href = "gachika.html"; // ← 遷移先URLに書き換えて！
+    }, 3000);
+  }
+
+  // 100%完了時に実行する例
+  let count = 0;
+  const counter = document.getElementById("counter");
+
+  function countUp() {
+    if (count < 100) {
+      counter.textContent = `${count}% 完了`;
+      count++;
+      setTimeout(countUp, Math.random() < 0.2 ? 1500 : 100); // 20%の確率で1.5秒休む
+    } else {
+      counter.textContent = `100% 完了`;
+      showRestartingAndRedirect(); // ← カウント終了後に実行！
+    }
+  }
+
+  countUp();
+</script>
+
+
+
+
+  <div class="qr-section">
+  <img src="img/qrcode_www.hcs.ac.jp.png" alt="QRコード" class="qr">
+  <div class="qr-text">
+    <p class="main-message">この問題と可能な解決方法の詳細については次のURLをご確認ください：<a href="https://www.microsoft.com/404" class="link">https://www.microsoft.com/404</a></p>
+    <p>停止コード:IRQL_NOT_LESS_OR_EQUAL<a href="" class="hidden-trigger">隠しページって、隠れたところにあるページなんですよ。</a></p>
+    <p>失敗した内容：myfalut.sys</p>
+  </div>
+</div>
+
+
+  </div>
+
+  <div class="emoji"> </div>
+  <p><a href=></a></p>
+  <div id="terminal" style="display: none;">
+    <div id="output"></div>
+    <input id="input" type="text" autocomplete="off" autofocus />
+  </div>
+
+  <script src="js/mystery.js"></script>
+</body>
+</html>
