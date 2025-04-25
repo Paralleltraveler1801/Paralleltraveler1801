@@ -24,22 +24,21 @@
     if (percent >= 100) {
       element.textContent = "100%";
 
-      // ⭐「再起動します...」を表示
+
       rebootText.style.display = "block";
 
-      // ⏳ 3秒待ってからページ遷移！
+
       setTimeout(() => {
-        window.location.href = "gachika.html"; // ← 遷移先のURLに変更OK！
+        window.location.href = "gachika.html";
       }, 3000);
 
       return;
     }
 
-    // カウントアップ
+
     percent++;
     element.textContent = percent + "%";
 
-    // ランダムな遅延（リアル感！）
     let baseDelay = Math.floor(Math.random() * 800) + 200;
     if (Math.random() < 0.17) {
       baseDelay = Math.floor(Math.random() * 4000) + 1000;
@@ -48,7 +47,6 @@
     setTimeout(updatePercent, baseDelay);
   }
 
-  // スタート！！
   updatePercent();
 </script>
 
@@ -59,7 +57,7 @@
   <img src="img/qrcode_www.hcs.ac.jp.png" alt="QRコード" class="qr">
   <div class="qr-text">
     <p class="main-message">この問題と可能な解決方法の詳細については次のURLをご確認ください：<a href="https://www.microsoft.com/404" class="link">https://www.microsoft.com/404</a></p>
-    <p>停止コード:IRQL_NOT_LESS_OR_EQUAL<a href="" class="hidden-trigger">隠しページって、隠れたところにあるページなんですよ。</a></p>
+    <p>停止コード:IRQL_NOT_LESS_OR_EQUAL<a href="fakenews.html" class="hidden-trigger">隠しページって、隠れたところにあるページなんですよ。</a></p>
     <p>失敗した内容：myfalut.sys</p>
   </div>
 </div>

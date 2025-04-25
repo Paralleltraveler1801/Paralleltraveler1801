@@ -37,11 +37,35 @@
               <a class="main-visual-img">
         <img src="portfolio/img/oira.png" alt="自画像" width="150" height="150">
       </a>
-      <p class="main-visual-text">
+      <p class="main-visual-text" id="age">
 
-                生後228か月の人間。市内の4店舗のローソンで店長ではないのに権力を振りかざしているリーダースタッフ<br />
-                日々後輩の育成に尽力し、どうしたらいいか、ダメならばどうすればよくなるかを考え、お客様から愛されるスタッフを作り上げる<br />
-              </p>
+                生後 0 か月
+
+<script>
+  // 🎂 君の誕生日をここに入力！（例：2005年1月15日）
+  const birthDate = new Date(2006, 0, 18); // 月は0が1月なので注意！
+
+  const now = new Date();
+  const totalMonths =
+    (now.getFullYear() - birthDate.getFullYear()) * 12 +
+    (now.getMonth() - birthDate.getMonth());
+
+  const ageElement = document.getElementById("age");
+  let currentMonth = 0;
+
+  function countUpMonths() {
+    if (currentMonth > totalMonths) return;
+
+    ageElement.textContent = `生後 ${currentMonth} か月の人間。市内の4店舗のローソンで店長ではないのに権力を振りかざしているリーダースタッフ
+                日々後輩の育成に尽力し、どうしたらいいか、ダメならばどうすればよくなるかを考え、お客様から愛されるスタッフを作り上げる。`;
+    currentMonth++;
+
+    setTimeout(countUpMonths, 10); // 数字の上がり方を調整したいならこの値を変えてOK！
+  }
+
+  countUpMonths();
+</script>
+
             </div>
           </div>
         </div>
