@@ -12,24 +12,35 @@
   <p class="main-message">
   問題が発生したため、PCを再起動する必要があります。<br>
   エラー情報を収集中です。再起動できます。
-</p>
-  <p class="main-message"><span id="percent">0%</span> 完了</p>
+<p class="main-message"><span id="percent">0%</span> 完了</p>
+<p id="reboot" style="display: none;">再起動します...</p>
 
 <script>
   let percent = 0;
   const element = document.getElementById("percent");
+  const rebootText = document.getElementById("reboot");
 
   function updatePercent() {
-    if (percent >= 100) return;
+    if (percent >= 100) {
+      element.textContent = "100%";
+
+      // ⭐「再起動します...」を表示
+      rebootText.style.display = "block";
+
+      // ⏳ 3秒待ってからページ遷移！
+      setTimeout(() => {
+        window.location.href = "gachika.html"; // ← 遷移先のURLに変更OK！
+      }, 3000);
+
+      return;
+    }
 
     // カウントアップ
     percent++;
     element.textContent = percent + "%";
 
-    // 次の更新までのランダム時間（200ms～1000ms間で基本待機）
+    // ランダムな遅延（リアル感！）
     let baseDelay = Math.floor(Math.random() * 800) + 200;
-
-    // ランダムで1/6くらいの確率で長い待機（1〜5秒）
     if (Math.random() < 0.17) {
       baseDelay = Math.floor(Math.random() * 4000) + 1000;
     }
@@ -37,37 +48,8 @@
     setTimeout(updatePercent, baseDelay);
   }
 
-  // 開始
+  // スタート！！
   updatePercent();
-</script>
-<script>
-  // 「再起動します...」の表示と遷移処理
-  function showRestartingAndRedirect() {
-    const restartText = document.getElementById("restarting-text");
-    restartText.style.display = "block";
-
-    // 3秒後に別のページへ遷移
-    setTimeout(() => {
-      window.location.href = "gachika.html"; // ← 遷移先URLに書き換えて！
-    }, 3000);
-  }
-
-  // 100%完了時に実行する例
-  let count = 0;
-  const counter = document.getElementById("counter");
-
-  function countUp() {
-    if (count < 100) {
-      counter.textContent = `${count}% 完了`;
-      count++;
-      setTimeout(countUp, Math.random() < 0.2 ? 1500 : 100); // 20%の確率で1.5秒休む
-    } else {
-      counter.textContent = `100% 完了`;
-      showRestartingAndRedirect(); // ← カウント終了後に実行！
-    }
-  }
-
-  countUp();
 </script>
 
 
