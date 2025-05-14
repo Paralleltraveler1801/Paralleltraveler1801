@@ -1,0 +1,13 @@
+table {
+  border-collapse: collapse;
+  font-size: 1.2rem;
+}
+th {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border: 2px solid #000}
+
+td {
+  padding: 10px;
+  border: 2px solid #000;
+}
