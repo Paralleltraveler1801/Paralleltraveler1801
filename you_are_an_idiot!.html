@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全画面画像スライドショー</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            transition: background-color 0.1s ease;
+        }
+        img {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            position: absolute;
+            opacity: 0;
+        }
+        .active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body id="background">
+    <img src="portfolio/img/youareanidiot.png" alt="Image 1" class="active" id="image1">
+    <img src="portfolio/img/youareanblack.png" alt="Image 2" id="image2">
+    <script>
+        const images = [document.getElementById('image1'), document.getElementById('image2')];
+        const body = document.getElementById('background');
+        let index = 0;
+        setInterval(() => {
+            images.forEach((img, i) => img.classList.toggle('active', i === index));
+            body.style.backgroundColor = index === 0 ? 'white' : 'black';
+            index = (index + 1) % images.length;
+        }, 500);
+    </script>
+</body>
+</html>
