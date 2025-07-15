@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ご登録ありがとうございました！</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #FFFACD; }
+        .card { background-color: #FF6347; color: white; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .btn { background-color: #FFD700; color: black; font-weight: bold; padding: 0.75rem 1.5rem; border-radius: 8px; margin-bottom: 1rem; display: block; width: 100%; text-align: center; transition: background-color 0.3s; }
+        .btn:hover { background-color: #FFA500; }
+        .timer { font-size: 2rem; color: #FF4500; margin-top: 1rem; }
+        .secure, .warning { display: flex; align-items: center; margin-bottom: 0.75rem; font-size: 0.875rem; }
+        .secure-icon { color: #32CD32; margin-right: 0.5rem; }
+        .warning-icon { color: #DC143C; margin-right: 0.5rem; }
+    </style>
+</head>
+<body>
+    <div class="flex flex-col items-center justify-center min-h-screen p-4">
+        <div class="card">
+            <h1 class="text-3xl font-bold mb-4">🎉 ご登録ありがとうございました！ 🎉</h1>
+            <p class="mb-4 text-lg">
+                ご登録は正常に完了いたしました。<br>
+                ご確認のため、以下のボタンを今すぐ押してください！
+            </p>
+            <a href="#" class="btn">✅ 今すぐ確認する</a>
+            <div class="secure">
+                <span class="secure-icon">🔒</span>
+                <span>セキュア接続保護中</span>
+            </div>
+            <div class="warning">
+                <span class="warning-icon">⚠️</span>
+                <span>時間内に操作しないと情報が失われます！</span>
+            </div>
+            <div class="timer" id="timer">05:00</div>
+        </div>
+    </div>
+    <script>
+        let timeLeft = 300;
+        function startTimer() {
+            const timerEl = document.getElementById('timer');
+            setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    const minutes = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+                    const seconds = String(timeLeft % 60).padStart(2, '0');
+                    timerEl.textContent = `${minutes}:${seconds}`;
+                }
+            }, 1000);
+        }
+        startTimer();
+    </script>
+</body>
+</html>

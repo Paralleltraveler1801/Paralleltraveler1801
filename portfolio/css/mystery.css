@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  padding: 80px 300px; /* ←← 上80px・左右60pxの余白で見やすさUP！ */
+  background-color: #0078d7;
+  color: white;
+  font-family: "Segoe UI", "メイリオ", sans-serif;
+  font-size: 20px;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.bsod {
+  max-width: 720px;         /* 少し横幅を広めに */
+  margin-left: 20px;        /* 本文全体にほんの少しの左マージンを加える */
+}
+
+.main-message {
+  font-size: 24px;     /* デフォルト20px → 少し大きめに！ */
+  font-weight: 500;    /* やや太めで読みやすさUP（任意） */
+}
+
+.emoji {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+
+.percentage {
+  margin: 20px 0;
+  font-size: 18px;
+}
+
+.link {
+  color: white;
+  text-decoration: underline;
+  word-break: break-word;
+}
+
+.small {
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.hidden-trigger {
+  color: #0078d7;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.qr-section {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* QRと文章の間にスペース */
+  margin-top: 30px;
+  max-width: 800px;
+}
+
+.qr {
+  width: 150px;
+  height: auto;
+}
+
+.qr-text {
+  font-size: 16px;
+  line-height: 1.5;
+}

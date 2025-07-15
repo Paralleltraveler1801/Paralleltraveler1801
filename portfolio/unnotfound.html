@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>404 Not Found</title>
+  <link rel="stylesheet" href="css/mystery.css">
+</head>
+<body>
+  <div id="bsod">
+    <div class="emoji">:( </div>
+  <p class="main-message">
+  問題が発生したため、PCを再起動する必要があります。<br>
+  エラー情報を収集中です。再起動できます。
+<p class="main-message"><span id="percent">0%</span> 完了</p>
+<p id="reboot" style="display: none;">再起動します...</p>
+
+<script>
+  let percent = 0;
+  const element = document.getElementById("percent");
+  const rebootText = document.getElementById("reboot");
+
+  function updatePercent() {
+    if (percent >= 100) {
+      element.textContent = "100%";
+
+
+      rebootText.style.display = "block";
+
+
+      setTimeout(() => {
+        window.location.href = "gachika.html";
+      }, 3000);
+
+      return;
+    }
+
+
+    percent++;
+    element.textContent = percent + "%";
+
+    let baseDelay = Math.floor(Math.random() * 800) + 200;
+    if (Math.random() < 0.17) {
+      baseDelay = Math.floor(Math.random() * 4000) + 1000;
+    }
+
+    setTimeout(updatePercent, baseDelay);
+  }
+
+  updatePercent();
+</script>
+
+
+
+
+  <div class="qr-section">
+  <img src="img/qrcode_www.hcs.ac.jp.png" alt="QRコード" class="qr">
+  <div class="qr-text">
+    <p class="main-message">この問題と可能な解決方法の詳細については次のURLをご確認ください：<a href="https://www.microsoft.com/404" class="link">https://www.microsoft.com/404</a></p>
+    <p>停止コード:IRQL_NOT_LESS_OR_EQUAL<a href="fakenews.html" class="hidden-trigger">隠しページって、隠れたところにあるページなんですよ。</a></p>
+    <p>失敗した内容：myfalut.sys</p>
+  </div>
+</div>
+
+
+  </div>
+
+  <div class="emoji"> </div>
+  <p><a href=></a></p>
+  <div id="terminal" style="display: none;">
+    <div id="output"></div>
+    <input id="input" type="text" autocomplete="off" autofocus />
+  </div>
+
+  <script src="js/mystery.js"></script>
+</body>
+</html>
