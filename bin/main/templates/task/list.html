@@ -34,7 +34,8 @@
                         <tr>
                             <th>No.</th>
                             <th>タスク</th>
-                            <th>期限</th>
+                            <th>期限日時</th>
+                            <th>優先度</th>
                             <th>削除</th>
                             <th>完了</th>
                         </tr>
@@ -43,7 +44,12 @@
                         <tr th:each="task, status : ${taskEntity.taskList}">
                           <td th:text="${status.count}">1</td>
                           <td th:text="${task.title}"></td>
-                          <td th:text="${task.limitday}"></td>
+                          <td th:text="${#dates.format(task.limitday, 'yyyy-MM-dd HH:mm')}"></td>
+                          <td>
+                <span th:if="${task.priority == 1}">高</span>
+  <span th:if="${task.priority == 2}">中</span>
+  <span th:if="${task.priority == 3}">低</span>
+</td>
                           <td>
                               <form method="post" th:action="@{/task/delete}">
                                   <input type="hidden" th:value="${task.id}" name="id" />
@@ -73,8 +79,16 @@
                     <form method="post" th:action="@{/task/insert}">
                         <label for="title">タイトル</label>
                         <input type="text" id="title" name="title" placeholder="" />
-                        <label for="date">期限</label>
-                        <input id="date" type="date" name="limit" />
+                        <label for="date">期限日時</label>
+                        <br>
+                        <input type="datetime-local" name="limit" />
+                        <br>
+                        <label for="priority">優先度</label>
+                        <select id="priority" name="priority">
+                            <option value="high">高</option>
+                            <option value="medium">中</option>
+                            <option value="low">低</option>
+                        </select>
                         <button class="bg-warning" type="submit">追加</button>
                     </form>
                 </div>
